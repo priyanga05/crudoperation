@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EmployeeserviceService } from '../employeeservice.service';
+import { EmployeeserviceService } from '../../service/employeeservice.service';
 
 @Component({
   selector: 'app-manageemployee',

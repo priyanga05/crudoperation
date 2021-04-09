@@ -3,24 +3,23 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EmpdetailsComponent } from './empdetails/empdetails.component';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import{ManageemployeeComponent } from './manageemployee/manageemployee.component'
+
+import{ SharedModule} from './shared/shared.module';
+
+import{ LeaveManagementModule} from './leave-management/leave-management.module'
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmpdetailsComponent,
-    ManageemployeeComponent
+  
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule
+    LeaveManagementModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,25 @@
+<div class="container">
+    <button [routerLink]="['/leave/add/0']">LeaveRequest</button>
+    <table class="table ">
+        <!-- //<button>">Leave Request</button>> -->
+        <thead>
+            <th>Employee Name</th>
+            <th>Leave Type</th>
+            <th>Reason</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th></th>
+        </thead>
+        <tr *ngFor="let col of leave ">
+            <td>{{col.employeename}}</td>
+            <td>{{col.leavetype}}</td>
+            <td>{{col.reason}}</td>
+            <td>{{col.startdate}}</td>
+            <td>{{col.enddate}}</td>
+            <td><a (click)="delete(col.id)">Delete</a></td>
+            <td><a [routerLink]="['/leave/edit',col.id]">Edit</a></td>
+            <!-- <td><a routerLink="leave">View</a></td> -->
+
+        </tr>
+    </table>
+</div>

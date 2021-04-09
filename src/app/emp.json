@@ -5,6 +5,22 @@
       "name": "priya",
       "email": "priya@gmail.com",
       "phoneno": "4657855688"
+    },
+    {
+      "id": "1",
+      "name": "priyanga",
+      "email": "priyanga@gmail.com",
+      "phoneno": "9751185241"
+    }
+  ],
+  "leave": [
+    {
+      "employeename": "priya",
+      "leavetype": "Sick Leave",
+      "reason": "fever",
+      "startdate": "2021-04-13",
+      "enddate": "2021-04-22",
+      "id": 2
     }
   ]
 }
