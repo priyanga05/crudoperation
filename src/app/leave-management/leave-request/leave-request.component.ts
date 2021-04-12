@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import{ LeaveManagementService} from '../../service/leave-management.service';
-
+import { MatDialogModule } from '@angular/material/dialog';
 @Component({
   selector: 'app-leave-request',
   templateUrl: './leave-request.component.html',
@@ -13,7 +13,8 @@ leavereq: FormGroup;
 id:number;
 header: String;
 editmode:boolean=false;
-  constructor(private router:ActivatedRoute,private fb:FormBuilder, private leaveservice:LeaveManagementService,private route:Router) { }
+//wasFormChanged = false;
+  constructor(private router:ActivatedRoute,private fb:FormBuilder, private leaveservice:LeaveManagementService,private route:Router, private dialog:MatDialogModule) { }
 
   ngOnInit(): void {
     this.id = +this.router.snapshot.paramMap.get('id');
@@ -22,12 +23,13 @@ editmode:boolean=false;
     this.header = this.id === 0? 'Add Leave' : 'Edit Leave';
     this.leavereq=this.fb.group({
 
-      employeename: [""],
+      name: [""],
       leavetype:[""],
       reason:[""],
       startdate:[],
       enddate:[]
     })
+    
     if(this.id!=0){
       this.getId();
     this.editmode=true;
@@ -37,6 +39,7 @@ editmode:boolean=false;
 
     }
   }
+  
   getId(){
     this.leaveservice.getById(this.id).subscribe(data=>{this.leavereq.patchValue(data)});
   }

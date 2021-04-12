@@ -1,6 +1,6 @@
 export class Leave{
     id:string;
-    employeename: string;
+    name: string;
     leavetype:string;
     reason:string;
     startdate:string;
