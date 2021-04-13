@@ -1,1 +1,10 @@
-<p>deletecomponent works!</p>
+<div class="container">
+    <div class="content-container">
+        <mat-icon id="close-icon" (click)="closeDialog()">close</mat-icon>
+        <span class="content-span full-width">{{data.message}}</span>
+    </div>
+    <div class="content-container">
+        <button mat-flat-button id="yes-button" color="primary" [mat-dialog-close]="true">Yes</button>
+        <button mat-flat-button id="no-button" color="warn" [mat-dialog-close]="false">No</button>
+    </div>
+</div>

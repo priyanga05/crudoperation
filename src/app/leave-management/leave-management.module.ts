@@ -7,6 +7,7 @@ import { LeaveManagementRoutingModule } from './leave-management-routing.module'
 import { DeletecomponentComponent } from './deletecomponent/deletecomponent.component';
 
 
+
 @NgModule({
   declarations: [LeaveRequestComponent, LeavemanagementListComponent, DeletecomponentComponent],
   entryComponents:[
