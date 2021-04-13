@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import{ LeaveManagementService} from '../../service/leave-management.service';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-leave-request',
   templateUrl: './leave-request.component.html',
@@ -14,7 +14,7 @@ id:number;
 header: String;
 editmode:boolean=false;
 //wasFormChanged = false;
-  constructor(private router:ActivatedRoute,private fb:FormBuilder, private leaveservice:LeaveManagementService,private route:Router, private dialog:MatDialogModule) { }
+  constructor(private router:ActivatedRoute,private fb:FormBuilder, private leaveservice:LeaveManagementService,private route:Router, private dialog:MatDialog) { }
 
   ngOnInit(): void {
     this.id = +this.router.snapshot.paramMap.get('id');
@@ -29,7 +29,6 @@ editmode:boolean=false;
       startdate:[],
       enddate:[]
     })
-    
     if(this.id!=0){
       this.getId();
     this.editmode=true;
@@ -47,14 +46,19 @@ editmode:boolean=false;
     if(this.editmode){
       this.leaveservice.update(this.id,this.leavereq.value).subscribe();
       this.route.navigateByUrl("/leave/leave-list");
+      this.dialog.closeAll();
     }
     else{
       console.log(this.leavereq.value);
       this.leaveservice.Add(this.leavereq.value).subscribe();
+      this.dialog.closeAll();
       console.log("user added");
       this.route.navigateByUrl("/leave/leave-list");
     }
-  
+    
+  }
+  onCancel(){
+    this.dialog.closeAll();
   }
 
 }

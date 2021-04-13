@@ -4,7 +4,7 @@
         <form [formGroup]="leavereq" (ngSubmit)="Submit()">
             <!-- <mat-grid-list cols="2" [cols]="breakpoint" rowHeight="85px" (window:resize)="onResize($event)"> -->
 
-            <div>
+            <div >
                 <label>Employee Name</label>
                 <input type="text" formControlName="name" class="form-control" />
             </div>
@@ -29,8 +29,12 @@
             </div>
             <!-- </mat-grid-list> -->
             <div>
-                <button type="submit">Submit</button>
+                <button type="submit">Save</button>
+                <button type="submit" (click)="onCancel()">Cancel</button>
             </div>
+
+               
+           
         </form>
     </div>
 </div>
