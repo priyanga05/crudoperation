@@ -52,7 +52,7 @@ leave: Leave[];
     })
 }
 delete(id:any){
-    this.openConfirmDialog("Are you sure want to delete this record?").afterClosed().subscribe(res=>{
+    this.openConfirmDialog("Do you want to delete this record?").afterClosed().subscribe(res=>{
       if(res){
         this.leaveservice.delete(id).subscribe((data:any)=>{  
             

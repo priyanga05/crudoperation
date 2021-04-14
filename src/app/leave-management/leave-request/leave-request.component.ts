@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import{ LeaveManagementService} from '../../service/leave-management.service';
 import { MatDialog,MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -14,7 +14,7 @@ leavereq: FormGroup;
 id:number;
 header: String;
 editmode:boolean=false;
-
+submitted = false;
 constructor(private router:ActivatedRoute,private fb:FormBuilder,private snackbar:MatSnackBar, @Inject(MAT_DIALOG_DATA) public data:any,private leaveservice:LeaveManagementService,private route:Router, private dialog:MatDialog,private dialogref:MatDialogRef<LeaveRequestComponent>,) { }
 
   ngOnInit(): void {
@@ -24,11 +24,11 @@ constructor(private router:ActivatedRoute,private fb:FormBuilder,private snackba
     
     this.leavereq=this.fb.group({
 
-      name: [""],
-      leavetype:[""],
-      reason:[""],
-      startdate:[],
-      enddate:[]
+      name: ["",[Validators.required, Validators.pattern(/^[A-Za-z]+$/)]],
+      leavetype:["",Validators.required],
+      reason:["",Validators.required],
+      startdate:["",Validators.required],
+      enddate:["",Validators.required]
     })
     
     if(this.id!=0){
@@ -47,6 +47,7 @@ constructor(private router:ActivatedRoute,private fb:FormBuilder,private snackba
   Submit(){
     if(this.editmode){
       this.leaveservice.update(this.id,this.leavereq.value).subscribe();
+      this.submitted=true;
       this.route.navigateByUrl("/leave/leave-list");
       this.dialogref.close();
     }  
@@ -54,6 +55,7 @@ constructor(private router:ActivatedRoute,private fb:FormBuilder,private snackba
       console.log(this.leavereq.value);
 
       this.leaveservice.Add(this.leavereq.value).subscribe();
+      this.submitted=true;
       this.dialogref.close();
       console.log("user added");
       this.route.navigateByUrl("/leave/leave-list");
