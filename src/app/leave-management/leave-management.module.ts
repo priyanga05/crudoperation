@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LeaveRequestComponent } from './leave-request/leave-request.component';
 import{ SharedModule} from '../shared/shared.module';
@@ -17,6 +17,7 @@ import { DeletecomponentComponent } from './deletecomponent/deletecomponent.comp
     CommonModule,
     LeaveManagementRoutingModule,
     SharedModule
-  ]
+  ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class LeaveManagementModule { }

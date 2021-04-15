@@ -5,6 +5,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { LeaveRequestComponent } from '../leave-request/leave-request.component';
 import { DeletecomponentComponent } from '../deletecomponent/deletecomponent.component';
 import{ MatSnackBar} from '@angular/material/snack-bar';
+import { MatTableDataSource } from '@angular/material/table';
 @Component({
   selector: 'app-leavemanagement-list',
   templateUrl: './leavemanagement-list.component.html',
@@ -12,22 +13,17 @@ import{ MatSnackBar} from '@angular/material/snack-bar';
 })
 export class LeavemanagementListComponent implements OnInit {
 leave: Leave[];
- result:any;
+displayedColumns:string[]=['name','leavetype','reason','startdate','enddate','actions'];
+  dataSource = new MatTableDataSource<any>();
   constructor(private leaveservice:LeaveManagementService, private dialog:MatDialog,private snackbar:MatSnackBar){}
   ngOnInit(): void {
     this.getData();
   }
-  openDialog(){ 
-      this.dialog.open(LeaveRequestComponent,{
-        disableClose:true,
-        data:{
-          id:"0"
-        } ,
-      });
-  }
   openEditDialog(leaveid:any){
     this.dialog.open(LeaveRequestComponent,{
       disableClose:true,
+      width: '400px',
+     height: '560px',
       data:{
         id:leaveid
       }
@@ -35,20 +31,18 @@ leave: Leave[];
   }
   openConfirmDialog(msg){
     return this.dialog.open(DeletecomponentComponent,{
-      width:'390px',
+      width:'280px',
       panelClass :'confirm-dialog-container',
       disableClose:true,
       data:{
         message:msg
       }
-    });
-  
+    }); 
   }
- 
   getData(){
     this.leaveservice.getAll().subscribe((data:any)=>{
     console.log(data);
-   this.leave=data;
+   this.dataSource=data;
     })
 }
 delete(id:any){
@@ -60,6 +54,7 @@ delete(id:any){
           this.snackbar.open('Deleted successfully', ' ', {
             duration: 3000,
           });
+         this.getData();
         }
         );
       }
