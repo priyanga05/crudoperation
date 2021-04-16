@@ -19,16 +19,7 @@ displayedColumns:string[]=['name','leavetype','reason','startdate','enddate','ac
   ngOnInit(): void {
     this.getData();
   }
-  openEditDialog(leaveid:any){
-    this.dialog.open(LeaveRequestComponent,{
-      disableClose:true,
-      width: '400px',
-     height: '560px',
-      data:{
-        id:leaveid
-      }
-    });  
-  }
+  
   openConfirmDialog(msg){
     return this.dialog.open(DeletecomponentComponent,{
       width:'280px',
@@ -44,6 +35,17 @@ displayedColumns:string[]=['name','leavetype','reason','startdate','enddate','ac
     console.log(data);
    this.dataSource=data;
     })
+}
+openEditDialog(leaveid:any){
+  this.dialog.open(LeaveRequestComponent,{
+    disableClose:true,
+    width: '400px',
+   height: '560px',
+    data:{
+      id:leaveid
+    }
+  });  
+
 }
 delete(id:any){
     this.openConfirmDialog("Do you want to delete this record?").afterClosed().subscribe(res=>{

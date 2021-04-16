@@ -13,8 +13,6 @@ export class DeletecomponentComponent implements OnInit {
 
   ngOnInit(): void {
   }
- closeDialog(){
- this.dialogref.close(false);
- }
+
  
 }

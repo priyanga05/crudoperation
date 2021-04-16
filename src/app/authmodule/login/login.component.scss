@@ -1,4 +1,18 @@
-.marging-block {
-    margin: 15px 15px 15px 15px;
-    width: 100%;
+mat-card {
+    max-width: 300px;
+    max-height: 650px;
+    text-align: center;
+    margin: 2em auto;
+}
+
+.header {
+    text-align: center;
+}
+
+.full_width {
+    width: 80px;
+}
+
+.email-input {
+    padding-top: 10px;
 }

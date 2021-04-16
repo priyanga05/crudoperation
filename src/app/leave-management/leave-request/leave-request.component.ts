@@ -46,6 +46,7 @@ constructor(private router:ActivatedRoute,private fb:FormBuilder,private snackba
         this.snackbar.open('Updated Successfully','',{
           duration:3000
         })
+       
       });
       this.route.navigateByUrl("/leave/leave-list");
       this.dialogref.close();
@@ -55,8 +56,10 @@ constructor(private router:ActivatedRoute,private fb:FormBuilder,private snackba
       this.leaveservice.Add(this.leavereq.value).subscribe(res=>{
         this.snackbar.open('Added Successfully','',{
           duration:3000
-        })       
+        })  
+        //  this.leaveservice.getAll();     
       });
+         
       this.dialogref.close();
       console.log("user added");
       this.route.navigateByUrl("/leave/leave-list");

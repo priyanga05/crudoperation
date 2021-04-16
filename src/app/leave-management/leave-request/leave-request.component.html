@@ -5,12 +5,11 @@
             <mat-form-field class="margin-block">
                 <mat-label>Employee Name</mat-label>
                 <input type="text" matInput formControlName="name" class="form-control" />
-                <mat-error *ngIf="leavereq.controls['name'].hasError('required')"></mat-error>
-                <mat-error class="error" *ngIf="leavereq.controls['name'].hasError('pattern')"></mat-error>
+                <mat-error *ngIf="leavereq.controls['name'].hasError('required')">Enter employee name</mat-error>
+                <mat-error class="error" *ngIf="leavereq.controls['name'].hasError('pattern')">Enter a valid name</mat-error>
 
             </mat-form-field>
             <mat-form-field class="margin-block">
-
                 <mat-label>Leave Type</mat-label>
                 <mat-select class="form-control" matInput formControlName="leavetype">
                     <mat-option value="" disabled selected hidden>--Select--</mat-option>
@@ -18,27 +17,26 @@
                     <mat-option value="Casual Leave">Casual Leave</mat-option>
                     <mat-error *ngIf="leavereq.controls['leavetype'].hasError('required')"></mat-error>
                 </mat-select>
-
             </mat-form-field>
 
             <mat-form-field class="margin-block">
                 <mat-label>Reason</mat-label>
                 <textarea class="form-control" matInput formControlName="reason" rows="3" cols="25"></textarea>
-                <mat-error *ngIf="leavereq.controls['reason'].hasError('required')"></mat-error>
+                <mat-error *ngIf="leavereq.controls['reason'].hasError('required')">enter reason</mat-error>
             </mat-form-field>
 
             <mat-form-field class="margin-block">
 
-                <mat-label>Strat Date</mat-label>
+                <mat-label>Start Date</mat-label>
                 <input type="date" matInput formControlName="startdate" class="form-control" />
-                <mat-error *ngIf="leavereq.controls['startdate'].hasError('required')"></mat-error>
+                <mat-error *ngIf="leavereq.controls['startdate'].hasError('required')">select start date</mat-error>
 
             </mat-form-field>
             <mat-form-field class="margin-block">
 
                 <mat-label>End Date</mat-label>
                 <input type="date" matInput formControlName="enddate" class="form-control" />
-                <mat-error *ngIf="leavereq.controls['enddate'].hasError('required')"></mat-error>
+                <mat-error *ngIf="leavereq.controls['enddate'].hasError('required')">select end date</mat-error>
 
             </mat-form-field>
 

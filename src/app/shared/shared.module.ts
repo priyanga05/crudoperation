@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
  import { MatInputModule } from '@angular/material/input';
  import{ MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
+import{ MatCardModule } from '@angular/material/card';
 @NgModule({
   declarations: [
     
@@ -27,7 +28,8 @@ import { MatSelectModule } from '@angular/material/select';
       MatSnackBarModule,
       MatInputModule,
       MatTableModule,
-      MatSelectModule 
+      MatSelectModule,
+      MatCardModule
   ],
   exports: [
     FormsModule,
@@ -39,7 +41,8 @@ import { MatSelectModule } from '@angular/material/select';
       MatSnackBarModule,
       MatInputModule,
       MatTableModule,
-      MatSelectModule 
+      MatSelectModule,
+      MatCardModule
      
   ],
 })
